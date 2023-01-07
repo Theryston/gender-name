@@ -4,6 +4,7 @@
   "description": "Model trained with 100 names of Brazilian people for the gender-name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": false,
   "files": [
     "dist",
     "README.md",
