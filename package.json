@@ -1,9 +1,9 @@
 {
   "name": "gender-name",
+  "description": "State-of-the-art artificial intelligence that says a person's gender based on their name",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "scripts": {

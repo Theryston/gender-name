@@ -1,0 +1,25 @@
+{
+  "name": "gender-name",
+  "version": "0.0.1-beta-1",
+  "description": "State-of-the-art artificial intelligence that says a person's gender based on their name",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "gender",
+    "name",
+    "artificial",
+    "intelligence"
+  ],
+  "author": "Theryston",
+  "license": "MIT",
+  "dependencies": {
+    "tsconfig": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.7.4"
+  }
+}
