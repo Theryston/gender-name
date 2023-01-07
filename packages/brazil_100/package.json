@@ -1,6 +1,6 @@
 {
   "name": "@gender-name/brazil_100",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Model trained with 100 names of Brazilian people for the gender-name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

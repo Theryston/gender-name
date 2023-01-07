@@ -1,6 +1,6 @@
 {
   "name": "gender-name",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "State-of-the-art artificial intelligence that says a person's gender based on their name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
   "author": "Theryston",
   "license": "MIT",
   "dependencies": {
-    "@gender-name/brazil_100": "workspace:^1.0.0",
+    "@gender-name/brazil_100": "workspace:^1.0.1",
     "brain.js": "2.0.0-beta.18",
     "tsconfig": "workspace:*"
   },
