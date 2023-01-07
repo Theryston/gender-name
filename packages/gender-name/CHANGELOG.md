@@ -1,5 +1,12 @@
 # gender-name
 
+## 0.0.1
+
+### Patch Changes
+
+- 9525b2e9: first version
+- 9525b2e9: add docs
+
 ## 0.0.1-beta.1
 
 ### Patch Changes
