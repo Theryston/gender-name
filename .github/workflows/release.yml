@@ -27,7 +27,7 @@ jobs:
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER && pnpm config set auto-install-peers true && pnpm config set strict-peer-dependencies false
       - name: install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       - name: build
         run: pnpm build
       - name: create and publish versions
