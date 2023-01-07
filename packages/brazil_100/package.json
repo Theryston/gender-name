@@ -4,6 +4,11 @@
   "description": "Model trained with 100 names of Brazilian people for the gender-name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc"
   },

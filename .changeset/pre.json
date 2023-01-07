@@ -1,0 +1,14 @@
+{
+  "mode": "exit",
+  "tag": "beta",
+  "initialVersions": {
+    "@gender-name/brazil_100": "1.0.0",
+    "eslint-config-custom": "1.0.0",
+    "gender-name": "0.0.1-next.0",
+    "tsconfig": "1.0.0"
+  },
+  "changesets": [
+    "metal-squids-marry",
+    "violet-boxes-hunt"
+  ]
+}
