@@ -1,5 +1,11 @@
 # @gender-name/brazil_100
 
+## 1.0.2
+
+### Patch Changes
+
+- add github url"
+
 ## 1.0.1
 
 ### Patch Changes

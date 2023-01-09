@@ -3,6 +3,10 @@
   "description": "State-of-the-art artificial intelligence that says a person's gender based on their name",
   "version": "0.0.0",
   "private": true,
+  "repository": "https://github.com/Theryston/gender-name",
+  "homepage": "https://github.com/Theryston/gender-name#readme",
+  "bugs": "https://github.com/Theryston/gender-name/issues",
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],

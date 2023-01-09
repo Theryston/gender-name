@@ -1,5 +1,13 @@
 # gender-name
 
+## 0.0.3
+
+### Patch Changes
+
+- add github url"
+- Updated dependencies
+  - @gender-name/brazil_100@1.0.2
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,10 +1,13 @@
 {
   "name": "@gender-name/brazil_100",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Model trained with 100 names of Brazilian people for the gender-name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
+  "repository": "https://github.com/Theryston/gender-name",
+  "homepage": "https://github.com/Theryston/gender-name#readme",
+  "bugs": "https://github.com/Theryston/gender-name/issues",
   "files": [
     "dist",
     "README.md",
