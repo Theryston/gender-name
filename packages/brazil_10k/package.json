@@ -1,0 +1,31 @@
+{
+  "name": "@gender-name/brazil_10k",
+  "version": "1.1.0",
+  "description": "Model trained with 10k names of Brazilian people for the gender-name",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "repository": "https://github.com/Theryston/gender-name",
+  "homepage": "https://github.com/Theryston/gender-name#readme",
+  "bugs": "https://github.com/Theryston/gender-name/issues",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Theryston",
+  "license": "MIT",
+  "dependencies": {
+    "tsconfig": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.7.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,5 +1,11 @@
 # gender-name
 
+## 0.1.0
+
+### Minor Changes
+
+- brazil_10k
+
 ## 0.0.3
 
 ### Patch Changes

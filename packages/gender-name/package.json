@@ -1,6 +1,6 @@
 {
   "name": "gender-name",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "State-of-the-art artificial intelligence that says a person's gender based on their name",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
