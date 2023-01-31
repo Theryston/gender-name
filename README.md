@@ -10,23 +10,24 @@ Using the gender name is very simple, for the first step you need to install the
 yarn add gender-name
 ```
 
-For it to work correctly you need a model, you can check the [list of models here](#list-of-models) in this example we will use the default model for testing:
+For it to work correctly you need a model, you can check the [list of models here](#list-of-models) in this example we will use the brazil_10k:
 
 ```bash
-yarn add @gender-name/brazil_100
+yarn add @gender-name/brazil_10k
 ```
 
 Now you can preview genres by passing a name and the model you downloaded earlier:
 
 ```ts
 import genderName from "gender-name";
-import brazil_100_model from "@gender-name/brazil_100";
+import brazil_10k_model from "@gender-name/brazil_10k";
 
-const result = await genderName("Maria", { model: brazil_100_model });
+const result = await genderName("Maria", { model: brazil_10k_model });
 
 console.log(result); // female
 ```
 
 ## List of Models
 
+- [brazil_10k](https://github.com/Theryston/gender-name/tree/main/packages/brazil_10k) - for small applications
 - [brazil_100](https://github.com/Theryston/gender-name/tree/main/packages/brazil_100) - just for testing
