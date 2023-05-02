@@ -1,0 +1,23 @@
+name: deploy-prod
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-prod:
+    name: deploy-prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: install dependence
+        run: yarn install
+      - name: configure serverless
+        run: yarn serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Create env file
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: echo "$ENV_FILE" > .env
+      - name: deploy
+        run: yarn deploy:aws
