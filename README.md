@@ -7,4 +7,4 @@ Url: `https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name={
 ## Exemplos
 
 - [https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name=theryston](https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name=theryston)
-- [https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name=João](João)
+- [https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name=João](https://g1ad0q0pm5.execute-api.us-east-1.amazonaws.com/prod/predict?name=João)
