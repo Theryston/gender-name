@@ -18,7 +18,7 @@ export class AppService {
     const inference = new HfInference(process.env.HF_ACCESS_TOKEN);
     const result = await inference.textClassification({
       inputs: name,
-      model: 'theryston/autotrain-gender-name-54840128117',
+      model: 'theryston/gender-name',
     });
     const mainResult = result.sort((a, b) => b.score - a.score)[0];
     return {
