@@ -4,7 +4,9 @@ import { HfInference } from '@huggingface/inference';
 @Injectable()
 export class AppService {
   sanitizeName(name: string): string {
-    const firstName = name.split(/\s+/)[0].replace(/[^a-zA-Z]+/g, '');
+    const firstName = name
+      .split(/\s+/)[0]
+      .replace(/[^a-zA-Z\u00C0-\u017F]+/g, '');
 
     return firstName.toLowerCase();
   }
