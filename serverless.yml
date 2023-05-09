@@ -5,6 +5,14 @@ useDotenv: true
 plugins:
   - serverless-offline
   - serverless-dotenv-plugin
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: api.gendername.com
+    basePath: ''
+    stage: ${opt:stage, self:provider.stage, "dev"}
+    createRoute53Record: true
 
 provider:
   name: aws
