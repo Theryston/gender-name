@@ -8,7 +8,6 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 - Currently optimized for Brazilian names, with plans to expand to support multiple languages through dedicated templates for each country.
 - User-friendly API endpoint designed for seamless integration with a wide range of platforms and applications
-- Model hosted on the popular Hugging Face platform for direct access and usage: [https://huggingface.co/theryston/gender-name](https://huggingface.co/theryston/gender-name)
 - Continuously updated and refined model to maintain high performance and accuracy
 - Totally free and open source, without any kind of request limit
 
@@ -53,10 +52,6 @@ The API will return a JSON object containing the predicted gender, score, and th
 ## Future Expansion to Multiple Languages
 
 While the Gender Name is currently optimized for Brazilian names, we are actively working on expanding the model to support multiple languages and countries. In the near future, users will be able to access dedicated templates for each country or language, providing even greater accuracy and cross-cultural applicability.
-
-## Accessing the Model through Hugging Face
-
-In addition to the API, the Gender Name model is also hosted on the widely recognized Hugging Face platform. You can access and utilize the model directly via the following link: [https://huggingface.co/theryston/gender-name](https://huggingface.co/theryston/gender-name)
 
 ## Seamless Integration with Diverse Platforms
 
