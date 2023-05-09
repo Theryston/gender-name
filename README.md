@@ -21,15 +21,15 @@ https://api.gendername.com/models
 
 Current available models:
 
-1. gn-1
+1. **gn-1**
     - country: 'BR'
     - type: 'human_name'
     - performance metrics: accuracy - 0.917, precision - 0.919, recall - 0.917, f1 - 0.917, loss - 0.262
-2. gnbr
+2. **gnbr**
     - country: 'BR'
     - type: 'human_name'
     - performance metrics: accuracy - 0.848, precision - 0.866, recall - 0.848, f1 - 0.848, loss - 0.36
-3. gnusa
+3. **gnusa**
     - huggingface: 'theryston/gnusa'
     - country: 'USA'
     - type: 'human_name'
