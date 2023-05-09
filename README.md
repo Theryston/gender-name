@@ -13,7 +13,7 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 ## Models
 
-You can list all available models by accessing the `/models` endpoint:
+You can list all available models by accessing the `GET /models` endpoint:
 
 ```bash
 https://api.gendername.com/models
