@@ -30,7 +30,6 @@ Current available models:
     - type: 'human_name'
     - performance metrics: accuracy - 0.848, precision - 0.866, recall - 0.848, f1 - 0.848, loss - 0.36
 3. **gnusa**
-    - huggingface: 'theryston/gnusa'
     - country: 'USA'
     - type: 'human_name'
     - performance metrics: accuracy - 0.862, precision - 0.854, recall - 0.862, f1 - 0.862, loss - 0.371
