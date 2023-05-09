@@ -42,7 +42,7 @@ To make use of the Gender Name API, simply perform a GET request to the followin
 https://api.gendername.com/predict?name={person_name}&model={model_name}
 ```
 
-Replace {model_name} with the model you wish to use for the prediction. If no model is specified, the default 'gnbr' model will be used.
+Replace `{model_name}` with the model you wish to use for the prediction. If no model is specified, the default 'gnbr' model will be used.
 
 ## Example API Requests
 
