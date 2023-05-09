@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HfInference } from '@huggingface/inference';
 import { models } from './models';
 
-const DEFAULT_MODEL = 'gnb';
+const DEFAULT_MODEL = 'gnbr';
 
 @Injectable()
 export class AppService {
