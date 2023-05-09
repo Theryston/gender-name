@@ -1,4 +1,4 @@
-service: dappyer-backend-api
+service: gender-name-api
 
 useDotenv: true
 
