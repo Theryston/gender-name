@@ -1,6 +1,6 @@
 {
   "name": "gender-name",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "An API that uses artificial intelligence to predict someone's gender based on their name",
   "author": "Theryston Santos",
   "private": true,
