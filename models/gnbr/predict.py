@@ -1,4 +1,4 @@
-from cog import BasePredictor, Input, Path
+from cog import BasePredictor, Input
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
