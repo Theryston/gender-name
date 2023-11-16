@@ -7,7 +7,6 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-domain-manager
 
-	
 package:
   patterns:
     - '!models/**'
@@ -27,7 +26,7 @@ provider:
 functions:
   main:
     handler: dist/main.handler
-    timeout: 200
+    timeout: 300 # Timeout after 5 minutes
     events:
       - http:
           method: ANY
