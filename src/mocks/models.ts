@@ -16,7 +16,7 @@ export const models: IModel[] = [
     replicateName: 'gnbr',
     replicatePublicUrl: 'https://replicate.com/theryston/gnbr',
     replicateStableVersion:
-      'e1c900238d93fd81a757ce929b1ef694e652fe03bd9a841333ceada80d7e3b6f',
+      '5fb1931a1bd7f19a2635db60e28499416192cf837e790cf49eb96e121e9d2481',
     githubUrl: 'https://github.com/Theryston/gender-name/tree/main/models/gnbr',
     country: 'USA',
     type: 'HUMAN_NAME',
