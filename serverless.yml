@@ -7,6 +7,11 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-domain-manager
 
+	
+package:
+  patterns:
+    - '!models/**'
+
 custom:
   customDomain:
     domainName: api.gendername.com
