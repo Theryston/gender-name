@@ -58,6 +58,17 @@ The API will return a JSON object containing the predicted gender, score, and th
 }
 ```
 
+## Cloning
+
+The repository contains the trained models, this means that the clone may take a little longer and the project may weigh more due to the models. Remember to have [LFS](https://git-lfs.com/) installed before running the clone.
+
+Full command (install LFS and clone):
+
+```bash
+git lfs install
+git clone https://github.com/Theryston/gender-name.git
+```
+
 ## Multilingual and Multicultural Support
 
 Gender Name is designed to support names across various cultures and languages. We have dedicated models for different cultures and languages, each optimized for the naming conventions and gender associations of a particular country or culture. This provides high accuracy and cross-cultural applicability.
