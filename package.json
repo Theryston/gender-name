@@ -15,7 +15,6 @@
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --fix"
   },
   "dependencies": {
-    "@huggingface/inference": "^2.2.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
@@ -23,6 +22,7 @@
     "aws-lambda": "^1.0.7",
     "dotenv": "^16.0.3",
     "reflect-metadata": "^0.1.13",
+    "replicate": "^0.22.0",
     "rxjs": "^7.2.0"
   },
   "devDependencies": {

@@ -1,10 +1,12 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { AppService } from './app.service';
 import { IModel, models } from './mocks/models';
+import { PredictService } from './services/predict.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly predictService: PredictService) {
+    return;
+  }
 
   @Get('/')
   root() {
@@ -28,7 +30,7 @@ export class AppController {
 
   @Get('/predict')
   async predict(@Query('name') name: string, @Query('model') model?: string) {
-    return await this.appService.execute(name, model);
+    return await this.predictService.execute(name, model);
   }
 
   @Get('/models')

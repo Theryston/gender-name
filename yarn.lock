@@ -2264,11 +2264,6 @@
     "@hapi/bourne" "^3.0.0"
     "@hapi/hoek" "^11.0.2"
 
-"@huggingface/inference@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@huggingface/inference/-/inference-2.2.0.tgz#75500e517cf03927273f1f028101fa97dc7db846"
-  integrity sha512-26YhLzkms4JvzDnoR72O8LjTk1oFMNe2M3YbrSlrpfCjAa0B26bLfvQj/J/xUOek05CO1bapc5V428mo/uq6rQ==
-
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -6592,6 +6587,11 @@ regexp.prototype.flags@^1.4.3:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
     functions-have-names "^1.2.3"
+
+replicate@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/replicate/-/replicate-0.22.0.tgz#d882975158ada1eab6d6191e439c86308a164ca6"
+  integrity sha512-jUfvYCcnnzG0l3NzgNLUBRfv7e5ZcZpBWzxGqx3v8bkvJmY0jK19JRtFtBgJFRBye61ggH1zC9cubGkburF82g==
 
 require-from-string@^2.0.2:
   version "2.0.2"
