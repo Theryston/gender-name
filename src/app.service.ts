@@ -1,19 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HfInference } from '@huggingface/inference';
-import { models } from './models';
+import { models } from './mocks/models';
+import sanitizeName from './utils/sanitize-name'
 
 const DEFAULT_MODEL = 'gnbr';
 
 @Injectable()
 export class AppService {
-  sanitizeName(name: string): string {
-    const firstName = name
-      .split(/\s+/)[0]
-      .replace(/[^a-zA-Z\u00C0-\u017F]+/g, '');
-
-    return firstName.toLowerCase();
-  }
-
   async execute(name: string, modelName?: string) {
     if (!name) {
       throw new HttpException('Name is required', HttpStatus.BAD_REQUEST);
@@ -23,7 +16,7 @@ export class AppService {
       modelName = DEFAULT_MODEL;
     }
 
-    const sanitizedFirstName = this.sanitizeName(name);
+    const sanitizedFirstName = sanitizeName(name);
 
     if (sanitizedFirstName.length < 2) {
       throw new HttpException(
@@ -44,6 +37,7 @@ export class AppService {
       model: model.huggingface,
     });
     const mainResult = result.sort((a, b) => b.score - a.score)[0];
+
     return {
       name: sanitizedFirstName,
       gender: mainResult.label,

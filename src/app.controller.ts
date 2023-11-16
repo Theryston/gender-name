@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
-import { IModel, models } from './models';
+import { IModel, models } from './mocks/models';
 
 @Controller()
 export class AppController {
