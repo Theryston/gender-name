@@ -19,21 +19,6 @@ You can list all available models by accessing the `GET /models` endpoint:
 https://api.gendername.com/models
 ```
 
-Current available models:
-
-1. **gn-1**
-    - country: 'BR'
-    - type: 'human_name'
-    - performance metrics: accuracy - 0.917, precision - 0.919, recall - 0.917, f1 - 0.917, loss - 0.262
-2. **gnbr**
-    - country: 'BR'
-    - type: 'human_name'
-    - performance metrics: accuracy - 0.848, precision - 0.866, recall - 0.848, f1 - 0.848, loss - 0.36
-3. **gnusa**
-    - country: 'USA'
-    - type: 'human_name'
-    - performance metrics: accuracy - 0.862, precision - 0.854, recall - 0.862, f1 - 0.862, loss - 0.371
-
 ## Detailed API Usage Instructions
 
 To make use of the Gender Name API, simply perform a GET request to the following URL, substituting `{person_name}` with the name for which you wish to predict the gender:
@@ -48,7 +33,6 @@ Replace `{model_name}` with the model you wish to use for the prediction. If no 
 
 Below are some examples showcasing the API's functionality:
 
-- [https://api.gendername.com/predict?name=Theryston&model=gn-1](https://api.gendername.com/predict?name=Theryston&model=gn-1)
 - [https://api.gendername.com/predict?name=João&model=gnbr](https://api.gendername.com/predict?name=João&model=gnbr)
 - [https://api.gendername.com/predict?name=Mary&model=gnusa](https://api.gendername.com/predict?name=Mary&model=gnusa)
 
