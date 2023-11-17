@@ -21,18 +21,16 @@ custom:
 provider:
   name: aws
   runtime: nodejs18.x
+  timeout: 300 # Timeout after 5 minutes
 
 
 functions:
   main:
     handler: dist/main.handler
-    timeout: 300 # Timeout after 5 minutes
     events:
       - http:
-          timeout:  300
           method: ANY
           path: /
       - http:
-          timeout:  300
           method: ANY
           path: '{proxy+}'
