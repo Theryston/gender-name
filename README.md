@@ -9,7 +9,7 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 - Dedicated models for different cultures and languages with the default model being 'gnbr' for Brazilian names.
 - User-friendly API endpoint designed for seamless integration with a wide range of platforms and applications.
 - Continuously updated and refined models to maintain high performance and accuracy.
-- Totally free and open source.
+- Totally free, open source and [without request limits](#request-limit)
 
 ## Models
 
@@ -92,7 +92,7 @@ We recommend that you use caching and it is already enabled by default, but you 
 
 ## Request Limit
 
-The Gender Name API has a limit of 100 non-cached predictions per hour per IP, which means 2,400 non-cached requests per day, but if you use the cache (is activated by default) you may never reach this limit because predictions made through the cache do not count towards the limit.
+The Gender Name API has no request limit for [cached prediction](#cache)!!! For predictions with the cache disabled there is a limit of 100 predictions per hour per IP, which means 2400 requests per day, but, remember: if you use the cache (it is enabled by default) you may never reach this limit because predictions made through the cache cannot count towards the limit.
 
 If this limit isn't enough for you, consider running the model through Replicate, where our models are hosted.
 
