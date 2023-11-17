@@ -45,10 +45,10 @@ POST https://api.gendername.com/predict
 
 ```json
 {
-    "_id": "6557c059de97f4a272bcfca6",
+    "_id": "6557c8749b5f81d6f347f0d9",
     "raw_name": "Theryston",
     "name": "theryston",
-    "model_id": "6557ac147ac8e9da67a17454",
+    "model_id": "6557c19ef428e2a600c6aeba",
     "gender": "male",
     "score": 0.9074452519416809,
     "full_result": [
@@ -63,9 +63,8 @@ POST https://api.gendername.com/predict
     ],
     "cache": true,
     "ip": "127.0.0.1",
-    "created_at": "2023-11-17T19:34:49.607Z",
-    "updated_at": "2023-11-17T19:34:49.607Z",
-    "current_limit_one_hour": 89
+    "created_at": "2023-11-17T20:09:24.075Z",
+    "updated_at": "2023-11-17T20:09:24.075Z"
 }
 ```
 

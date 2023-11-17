@@ -127,13 +127,7 @@ export class PredictService {
       _id: resultCreation.insertedId,
     });
 
-    const currentLimitOneHour =
-      MAX_PREDICTS_PER_HOUR - (predictionsCount + (prediction.cache ? 0 : 1));
-
-    return {
-      ...prediction,
-      current_limit_one_hour: currentLimitOneHour,
-    };
+    return prediction;
   }
 
   private async getCachedPrediction(
