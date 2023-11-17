@@ -1,10 +1,14 @@
 import { Controller, Get, Query, Ip, Post } from '@nestjs/common';
-import { IModel, models } from './database/data/models';
 import { PredictService } from './services/predict.service';
+import { ListModelsService } from './services/list-models.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly predictService: PredictService) {
+  constructor(
+    private readonly predictService: PredictService,
+
+    private readonly listModelsService: ListModelsService,
+  ) {
     return;
   }
 
@@ -55,7 +59,7 @@ export class AppController {
   }
 
   @Get('/models')
-  models(): IModel[] {
-    return models;
+  models() {
+    return this.listModelsService.execute();
   }
 }
