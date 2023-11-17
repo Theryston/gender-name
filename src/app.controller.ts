@@ -1,5 +1,5 @@
-import { Controller, Get, Query, Ip } from '@nestjs/common';
-import { IModel, models } from './mocks/models';
+import { Controller, Get, Query, Ip, Post } from '@nestjs/common';
+import { IModel, models } from './database/data/models';
 import { PredictService } from './services/predict.service';
 
 @Controller()
@@ -34,10 +34,24 @@ export class AppController {
     @Ip() ip: string,
     @Query('model') model?: string,
   ) {
-    console.log(
-      `[/predict] predicting name ${name} with model ${model} for IP ${ip}`,
-    );
-    return await this.predictService.execute(name, model);
+    return await this.predictService.execute({
+      name,
+      ip,
+      modelName: model,
+    });
+  }
+
+  @Post('/predict')
+  async createPredict(
+    @Query('name') name: string,
+    @Ip() ip: string,
+    @Query('model') model?: string,
+  ) {
+    return await this.predictService.execute({
+      name,
+      ip,
+      modelName: model,
+    });
   }
 
   @Get('/models')

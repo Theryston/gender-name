@@ -1,13 +1,33 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import sanitizeName from '../utils/sanitize-name';
-import { models } from '../mocks/models';
 import Replicate from 'replicate';
+import getClient from 'src/database/get-client';
 
 const DEFAULT_MODEL = 'gnbr';
+const MAX_PREDICTS_PER_HOUR = 100;
 
 @Injectable()
 export class PredictService {
-  async execute(name: string, modelName?: string) {
+  async execute({
+    name,
+    ip,
+    modelName,
+  }: {
+    name: string;
+    ip: string;
+    modelName?: string;
+  }) {
+    const clientDb = await getClient();
+
+    const predictionsCount = await this.getPredictionsCount(ip, clientDb);
+
+    if (predictionsCount >= MAX_PREDICTS_PER_HOUR) {
+      throw new HttpException(
+        `Limit of ${MAX_PREDICTS_PER_HOUR} predictions per hour reached`,
+        HttpStatus.TOO_MANY_REQUESTS,
+      );
+    }
+
     if (!name) {
       throw new HttpException('Name is required', HttpStatus.BAD_REQUEST);
     }
@@ -25,7 +45,9 @@ export class PredictService {
       );
     }
 
-    const model = models.find((m) => m.name === modelName);
+    const model = await clientDb.collection('models').findOne({
+      name: modelName,
+    });
 
     if (!model) {
       throw new HttpException('Model not found', HttpStatus.NOT_FOUND);
@@ -35,8 +57,12 @@ export class PredictService {
       auth: process.env.REPLICATE_TOKEN,
     });
 
+    console.log(
+      `[PredictService] predicting name ${sanitizedFirstName} with model ${modelName} for IP ${ip}`,
+    );
+
     const output = await replicate.run(
-      `${model.replicateOwnerName}/${model.replicateName}:${model.replicateStableVersion}`,
+      `${model.replicate_owner_name}/${model.replicate_name}:${model.replicate_stable_version}`,
       {
         input: {
           name: sanitizedFirstName,
@@ -57,11 +83,40 @@ export class PredictService {
 
     const sortedFullResult = fullResultArr.sort((a, b) => b.score - a.score);
 
-    return {
+    const resultCreation = await clientDb.collection('predictions').insertOne({
+      raw_name: name,
       name: sanitizedFirstName,
+      model: modelName,
       gender: maxGender,
       score: maxScore,
       full_result: sortedFullResult,
-    };
+      ip,
+      created_at: new Date(),
+      updated_at: new Date(),
+    });
+
+    const prediction = await clientDb.collection('predictions').findOne({
+      _id: resultCreation.insertedId,
+    });
+
+    return prediction;
+  }
+
+  private async getPredictionsCount(
+    ip: string,
+    clientDb: any,
+  ): Promise<number> {
+    const startOfHour = new Date();
+    startOfHour.setSeconds(0, 0);
+    startOfHour.setMinutes(0, 0);
+
+    const count = await await clientDb
+      .collection('predictions')
+      .countDocuments({
+        ip: ip,
+        created_at: { $gte: startOfHour },
+      });
+
+    return count;
   }
 }
