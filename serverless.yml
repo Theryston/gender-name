@@ -29,8 +29,10 @@ functions:
     timeout: 300 # Timeout after 5 minutes
     events:
       - http:
+          timeout:  300
           method: ANY
           path: /
       - http:
+          timeout:  300
           method: ANY
           path: '{proxy+}'
