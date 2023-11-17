@@ -86,7 +86,7 @@ export class PredictService {
     const resultCreation = await clientDb.collection('predictions').insertOne({
       raw_name: name,
       name: sanitizedFirstName,
-      model: modelName,
+      model_id: model._id,
       gender: maxGender,
       score: maxScore,
       full_result: sortedFullResult,

@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Ip, Post } from '@nestjs/common';
+import { Controller, Get, Query, Ip, Post, Body } from '@nestjs/common';
 import { PredictService } from './services/predict.service';
 import { ListModelsService } from './services/list-models.service';
 
@@ -47,14 +47,17 @@ export class AppController {
 
   @Post('/predict')
   async createPredict(
-    @Query('name') name: string,
+    @Body()
+    body: {
+      name: string;
+      model?: string;
+    },
     @Ip() ip: string,
-    @Query('model') model?: string,
   ) {
     return await this.predictService.execute({
-      name,
+      name: body.name,
+      modelName: body.model,
       ip,
-      modelName: model,
     });
   }
 
