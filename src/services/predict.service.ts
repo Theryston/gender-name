@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import sanitizeName from '../utils/sanitize-name';
 import Replicate from 'replicate';
 import getClient from 'src/database/get-client';
+import { ObjectId } from 'mongodb';
 
 const DEFAULT_MODEL = 'gnbr';
 const MAX_PREDICTS_PER_HOUR = 100;
@@ -11,10 +12,12 @@ export class PredictService {
   async execute({
     name,
     ip,
+    noCache,
     modelName,
   }: {
     name: string;
     ip: string;
+    noCache?: boolean;
     modelName?: string;
   }) {
     const clientDb = await getClient();
@@ -53,43 +56,68 @@ export class PredictService {
       throw new HttpException('Model not found', HttpStatus.NOT_FOUND);
     }
 
-    const replicate = new Replicate({
-      auth: process.env.REPLICATE_TOKEN,
-    });
-
-    console.log(
-      `[PredictService] predicting name ${sanitizedFirstName} with model ${modelName} for IP ${ip}`,
+    const cachedPrediction = await this.getCachedPrediction(
+      model._id,
+      sanitizedFirstName,
+      clientDb,
     );
 
-    const output = await replicate.run(
-      `${model.replicate_owner_name}/${model.replicate_name}:${model.replicate_stable_version}`,
-      {
-        input: {
-          name: sanitizedFirstName,
+    let predictResultOnly;
+    if (!cachedPrediction || noCache) {
+      const replicate = new Replicate({
+        auth: process.env.REPLICATE_TOKEN,
+      });
+
+      console.log(
+        `[PredictService] predicting name ${sanitizedFirstName} with model ${modelName} for IP ${ip}`,
+      );
+
+      const output = await replicate.run(
+        `${model.replicate_owner_name}/${model.replicate_name}:${model.replicate_stable_version}`,
+        {
+          input: {
+            name: sanitizedFirstName,
+          },
         },
-      },
-    );
+      );
 
-    const maxGender = Object.keys(output).reduce((prev, current) =>
-      output[prev] > output[current] ? prev : current,
-    );
+      const maxGender = Object.keys(output).reduce((prev, current) =>
+        output[prev] > output[current] ? prev : current,
+      );
 
-    const maxScore = output[maxGender];
+      const maxScore = output[maxGender];
 
-    const fullResultArr = Object.keys(output).map((label) => ({
-      label: label,
-      score: output[label],
-    }));
+      const fullResultArr = Object.keys(output).map((label) => ({
+        label: label,
+        score: output[label],
+      }));
 
-    const sortedFullResult = fullResultArr.sort((a, b) => b.score - a.score);
+      const sortedFullResult = fullResultArr.sort((a, b) => b.score - a.score);
+
+      predictResultOnly = {
+        gender: maxGender,
+        score: maxScore,
+        full_result: sortedFullResult,
+        cache: false,
+      };
+    } else {
+      console.log(
+        `[PredictService] using cache for name ${sanitizedFirstName} with model ${modelName} for IP ${ip}`,
+      );
+
+      predictResultOnly = {
+        gender: cachedPrediction.gender,
+        score: cachedPrediction.score,
+        full_result: cachedPrediction.full_result,
+        cache: true,
+      };
+    }
 
     const resultCreation = await clientDb.collection('predictions').insertOne({
       raw_name: name,
       name: sanitizedFirstName,
       model_id: model._id,
-      gender: maxGender,
-      score: maxScore,
-      full_result: sortedFullResult,
+      ...predictResultOnly,
       ip,
       created_at: new Date(),
       updated_at: new Date(),
@@ -99,7 +127,24 @@ export class PredictService {
       _id: resultCreation.insertedId,
     });
 
-    return prediction;
+    const currentLimitOneHour =
+      MAX_PREDICTS_PER_HOUR - (predictionsCount + (prediction.cache ? 0 : 1));
+
+    return {
+      ...prediction,
+      current_limit_one_hour: currentLimitOneHour,
+    };
+  }
+
+  private async getCachedPrediction(
+    model_id: ObjectId,
+    name: string,
+    clientDb: any,
+  ) {
+    return await clientDb.collection('predictions').findOne({
+      model_id,
+      name,
+    });
   }
 
   private async getPredictionsCount(
@@ -114,6 +159,7 @@ export class PredictService {
       .collection('predictions')
       .countDocuments({
         ip: ip,
+        cache: false,
         created_at: { $gte: startOfHour },
       });
 

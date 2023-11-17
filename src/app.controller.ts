@@ -1,4 +1,12 @@
-import { Controller, Get, Query, Ip, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Ip,
+  Post,
+  Body,
+  Headers,
+} from '@nestjs/common';
 import { PredictService } from './services/predict.service';
 import { ListModelsService } from './services/list-models.service';
 
@@ -53,11 +61,15 @@ export class AppController {
       model?: string;
     },
     @Ip() ip: string,
+    @Headers() headers,
   ) {
+    const noCache = headers['no-cache'] === 'true';
+
     return await this.predictService.execute({
       name: body.name,
-      modelName: body.model,
       ip,
+      noCache,
+      modelName: body.model,
     });
   }
 

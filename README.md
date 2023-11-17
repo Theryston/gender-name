@@ -45,10 +45,10 @@ POST https://api.gendername.com/predict
 
 ```json
 {
-    "_id": "6557a4b5f2eedede4545c022",
+    "_id": "6557c059de97f4a272bcfca6",
     "raw_name": "Theryston",
     "name": "theryston",
-    "model_id": "65579eddfa5bac81987275fd",
+    "model_id": "6557ac147ac8e9da67a17454",
     "gender": "male",
     "score": 0.9074452519416809,
     "full_result": [
@@ -61,9 +61,11 @@ POST https://api.gendername.com/predict
             "score": 0.09255477786064148
         }
     ],
+    "cache": true,
     "ip": "127.0.0.1",
-    "created_at": "2023-11-17T17:36:53.551Z",
-    "updated_at": "2023-11-17T17:36:53.551Z"
+    "created_at": "2023-11-17T19:34:49.607Z",
+    "updated_at": "2023-11-17T19:34:49.607Z",
+    "current_limit_one_hour": 89
 }
 ```
 
@@ -78,9 +80,19 @@ git lfs install
 git clone https://github.com/Theryston/gender-name.git
 ```
 
+## Cache
+
+When you request a prediction we will see if someone has already made a prediction for that name and that model, if so we will not run the model, we will just use the already predicted result to generate your prediction. Note: your prediction will still be new, it will still have a unique ID, the only difference is that the `gender`, `score` and `full_result` fields will be reused from another prediction.
+
+This is good for several reasons: the process can be much faster since the model will not be executed, responses collected from the cache do not count towards your hourly request limit, we pay per model execution and if the model does not run we don't pay...
+
+If no one has previously made a prediction for the model and the name you are making the prediction for, you will not get the data from the cache, as there is no cache, but if you run the same prediction again you will see that it will already use the cache.
+
+We recommend that you use caching and it is already enabled by default, but you can disable it by sending the `no-cache` header to `true`
+
 ## Request Limit
 
-The Gender Name API has a limit of 100 requests per hour per IP, which equates to 2,400 requests per day, twice as many as most APIs that predict gender.
+The Gender Name API has a limit of 100 non-cached predictions per hour per IP, which means 2,400 non-cached requests per day, but if you use the cache (is activated by default) you may never reach this limit because predictions made through the cache do not count towards the limit.
 
 If this limit isn't enough for you, consider running the model through Replicate, where our models are hosted.
 
