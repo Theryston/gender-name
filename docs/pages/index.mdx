@@ -1,0 +1,312 @@
+---
+title: Gender Name - A free, unlimited API to predict gender
+---
+
+import { Feature, Features } from '@components/features';
+import { ArrowRightIcon } from '@components/icons';
+import cn from 'clsx';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import docsCard from '../public/assets/card-1.png';
+import styles from './index.module.css';
+
+export function File({ name, className, ...props }) {
+  return (
+    <span className={cn(styles.file, className)} {...props}>
+      {name}
+    </span>
+  );
+}
+
+export function Comparison({ a, b, invert, ...props }) {
+  return (
+    <div className={cn(styles.comparison, invert && styles.invert)} {...props}>
+      <div>{a}</div>
+      <ArrowRightIcon width="1.2em" />
+      <div>{b}</div>
+    </div>
+  );
+}
+
+export function I18n() {
+  const [active, setActive] = useState('');
+  return (
+    <Comparison
+      a={
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+          <File
+            name="/hello.en-US.mdx"
+            className={active === 'en' && styles.active}
+            onPointerOver={() => setActive('en')}
+          />
+          <File
+            name="/hello.de-DE.mdx"
+            className={active === 'de' && styles.active}
+            onPointerOver={() => setActive('de')}
+          />
+          <File
+            name="/hello.ja-JP.mdx"
+            className={active === 'ja' && styles.active}
+            onPointerOver={() => setActive('ja')}
+          />
+        </div>
+      }
+      b={
+        <div
+          style={{ display: 'flex', flexDirection: 'column' }}
+          className="menu overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800 dark:ring-white dark:ring-opacity-20"
+        >
+          <span
+            className={cn(
+              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
+              active === 'en'
+                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
+                : 'text-gray-800 dark:text-gray-100 ',
+            )}
+            onPointerOver={() => setActive('en')}
+          >
+            English
+          </span>
+          <span
+            className={cn(
+              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
+              active === 'de'
+                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
+                : 'text-gray-800 dark:text-gray-100 ',
+            )}
+            onPointerOver={() => setActive('de')}
+          >
+            Deutsch
+          </span>
+          <span
+            className={cn(
+              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
+              active === 'ja'
+                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
+                : 'text-gray-800 dark:text-gray-100 ',
+            )}
+            onPointerOver={() => setActive('ja')}
+          >
+            日本語
+          </span>
+        </div>
+      }
+    />
+  );
+}
+
+<div className="home-content">
+  <div className="content-container hero-container">
+    <h1 className="headline">Find out someone's gender <br className='sm:block hidden'/>by name for free</h1>
+    <p className="subtitle">
+      Simple, free, open source, without API key and unlimited. <br className='sm:block hidden'/> Predict a person's gender with just a POST request
+    </p>
+    <p className="subtitle">
+      <Link className={styles.cta} href="/docs">Get started <span>→</span></Link>
+    </p>
+  </div>
+  <style jsx>{`
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .content-container {
+      max-width: 90rem;
+      padding-left: max(env(safe-area-inset-left),1.5rem);
+      padding-right: max(env(safe-area-inset-right),1.5rem);
+      margin: 0 auto;
+    }
+    .features-container {
+      margin: 8rem 0 0;
+      padding: 4rem 0;
+      background-color: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .features-container .content-container {
+      margin-top: -8rem;
+    }
+    :global(.dark) .features-container {
+      background-color: #000;
+      border-bottom: 1px solid rgb(38,38,38);
+    }
+    .headline {
+      display: inline-flex;
+      font-size: 3.125rem;
+      font-size: min(4.375rem, max(8vw, 2.5rem));
+      font-weight: 700;
+      font-feature-settings: initial;
+      letter-spacing: -.12rem;
+      margin-left: -0.2rem;
+      margin-top: 3.4rem;
+      line-height: 1.1;
+      background-image: linear-gradient(146deg,#000,#757a7d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    :global(.dark) .headline {
+      background-image: linear-gradient(146deg,#fff,#757a7d);
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      font-size: min(1.3rem, max(3.5vw, 1.2rem));
+      font-feature-settings: initial;
+      line-height: 1.6;
+    }
+    :global(#docs-card) {
+      min-height: 650px;
+      color: #fff;
+      text-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    }
+    :global(#docs-card img) {
+      object-fit: cover;
+      object-position: left;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+    :global(#docs-card img:nth-child(2)) {
+      display: none;
+    }
+    :global(.dark #docs-card img:nth-child(2)) {
+      display: initial;
+    }
+    :global(.dark #docs-card img:nth-child(1)) {
+      display: none;
+    }
+    :global(.feat-darkmode) {
+      min-height: 300px;
+    }
+    :global(.feat-darkmode h3) {
+      font-size: 48px;
+    }
+    @media screen and (max-width: 1200px) {
+      :global(.feat-darkmode h3) {
+        font-size: 4vw;
+        font-size: min(48px, max(4vw, 30px));
+      }
+      .headline {
+        letter-spacing: -.08rem;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      :global(#docs-card) {
+        aspect-ratio: 135/86;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      :global(#docs-card) {
+        min-height: 348px;
+        width: 100%;
+        aspect-ratio: auto;
+      }
+      :global(#docs-card img) {
+        object-position: -26px 0;
+        width: 250%;
+        max-width: initial;
+      }
+    }
+  `}</style>
+
+  <div className="features-container">
+    <div className="content-container">
+      <Features>
+        <Feature index={0} large centered id="docs-card" href="/docs">
+          <Image src={docsCard} alt="Background" loading="eager" />
+          <Image src={docsCard} alt="Background (Dark)" loading="eager" />
+          <h3>Simple, direct and clear answers</h3>
+        </Feature>
+        <Feature index={4} centered style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundImage: 'url(/assets/gradient-bg.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          color: '#fff'
+        }} href="/docs">
+          <svg fill="#ffffff" width="100px" height="100px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.07 4.25c-1.62 0-3 .94-4.07 2.79-1.08-1.85-2.45-2.79-4.07-2.79A3.84 3.84 0 0 0 0 8a3.84 3.84 0 0 0 3.93 3.75c1.62 0 3-.94 4.07-2.79 1.08 1.85 2.45 2.79 4.07 2.79A3.84 3.84 0 0 0 16 8a3.84 3.84 0 0 0-3.93-3.75zM3.93 10.5A2.6 2.6 0 0 1 1.25 8a2.6 2.6 0 0 1 2.68-2.5c1.25 0 2.29.82 3.18 2.5-.89 1.68-1.93 2.5-3.18 2.5zm8.14 0c-1.25 0-2.29-.82-3.18-2.5.89-1.68 1.93-2.5 3.18-2.5A2.6 2.6 0 0 1 14.75 8a2.6 2.6 0 0 1-2.68 2.5z"/></svg>
+          <p style={{
+            textShadow: '0 2px 4px rgb(0 0 0 / 20%)'
+          }}>Never stop your system! <br className="hide-medium"/>This API has no request limit!</p>
+        </Feature>
+        <Feature index={5} centered className="feat-darkmode" style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <motion.div
+            animate={{
+              backgroundPosition: ['0% 0%', '50% 40%', '50% 40%', '100% 100%'],
+              backgroundImage: [`radial-gradient(farthest-corner, #e2e5ea, #e2e5ea)`, 'radial-gradient(farthest-corner, #06080a, #e2e5ea)', 'radial-gradient(farthest-corner, #06080a, #e2e5ea)', 'radial-gradient(farthest-corner, #e2e5ea, #e2e5ea)'],
+            }}
+            transition={{
+              backgroundPosition: {
+                times: [0, .5, .5, 1],
+                type: 'spring',
+                repeat: Infinity,
+                duration: 10,
+                delay: 1
+              },
+              backgroundImage: {
+                times: [0, .2, .8, 1],
+                repeat: Infinity,
+                duration: 10,
+                delay: 1
+              },
+            }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundImage: `radial-gradient(farthest-corner, #06080a, #e2e5ea)`,
+              backgroundSize: '400% 400%',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          <motion.h3
+            animate={{
+              color: ['#dae5ff', '#fff', '#fff', '#dae5ff'],
+            }}
+            transition={{
+              color: {
+                times: [.25, .35, .7, .8],
+                type: 'spring',
+                repeat: Infinity,
+                duration: 10,
+                delay: 1
+              },
+            }}
+            style={{
+              position: 'relative',
+              mixBlendMode: 'difference',
+            }}
+          >Fully <br />public <br />API</motion.h3>
+        </Feature>
+        <Feature index={6} large href="/docs">
+            <h3>Various cultures, various models</h3>
+            <p>We have several AI models that can be used for free to predict the gender of people from different countries</p>
+        </Feature>
+        <Feature index={10} large>
+          <h3>And more...</h3>
+          <p>Cached Name Predict / Continuously Updated / Open Source Models... <br/>Several free benefits, start enjoying them now!</p>
+          <p className="subtitle"><Link className="!no-underline" href="/docs">Start using Gender Name →</Link></p>
+        </Feature>
+      </Features>
+    </div>
+  </div>
+</div>
