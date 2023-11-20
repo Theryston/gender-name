@@ -10,6 +10,7 @@ plugins:
 package:
   patterns:
     - '!models/**'
+    - '!docs/**'
 
 custom:
   customDomain:
