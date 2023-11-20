@@ -99,10 +99,6 @@ The process is very simple: in the model search route `GET /models` open the lin
 
 Remember: this cost is not our responsibility, it is solely the responsibility of the server at Replicate, as when running directly there you will be “hosting” the models yourself.
 
-## API Latency
-
-The average latency of each prediction is 400ms, but as the models are running in Replicate, sometimes Replicate can leave the model cold, this causes some requests to last a little longer, or even have a timeout in the request, this duration is the time required for Replicate to load the models again. So remember to prepare your API to try again if there is a timeout, even though this is not very frequent for models like gnbr.
-
 ## Multilingual and Multicultural Support
 
 Gender Name is designed to support names across various cultures and languages. We have dedicated models for different cultures and languages, each optimized for the naming conventions and gender associations of a particular country or culture. This provides high accuracy and cross-cultural applicability.

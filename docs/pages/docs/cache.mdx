@@ -1,0 +1,9 @@
+# Cache
+
+When you request a prediction we will see if someone has already made a prediction for that name and that model, if so we will not run the model, we will just use the already predicted result to generate your prediction. Note: your prediction will still be new, it will still have a unique ID, the only difference is that the `gender`, `score` and `full_result` fields will be reused from another prediction.
+
+This is good for several reasons: the process can be much faster since the model will not be executed, responses collected from the cache do not count towards your hourly request limit, we pay per model execution and if the model does not run we don't pay...
+
+If no one has previously made a prediction for the model and the name you are making the prediction for, you will not get the data from the cache, as there is no cache, but if you run the same prediction again you will see that it will already use the cache.
+
+We recommend that you use caching and it is already enabled by default, but you can disable it by sending the `no-cache` header to `true`
