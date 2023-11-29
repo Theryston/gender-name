@@ -29,9 +29,9 @@ functions:
   main:
     handler: dist/main.handler
     events:
-      - httpApi:
+      - http:
           method: ANY
           path: /
-      - httpApi:
+      - http:
           method: ANY
           path: '{proxy+}'
