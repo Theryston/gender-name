@@ -2,15 +2,15 @@
 title: Gender Name - A free, unlimited API to predict gender
 ---
 
-import { Feature, Features } from '@components/features';
-import { ArrowRightIcon } from '@components/icons';
-import cn from 'clsx';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import docsCard from '../public/assets/card-1.png';
-import styles from './index.module.css';
+import { Feature, Features } from "@components/features";
+import { ArrowRightIcon } from "@components/icons";
+import cn from "clsx";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import docsCard from "../public/assets/card-1.png";
+import styles from "./index.module.css";
 
 export function File({ name, className, ...props }) {
   return (
@@ -31,63 +31,63 @@ export function Comparison({ a, b, invert, ...props }) {
 }
 
 export function I18n() {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState("");
   return (
     <Comparison
       a={
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
           <File
             name="/hello.en-US.mdx"
-            className={active === 'en' && styles.active}
-            onPointerOver={() => setActive('en')}
+            className={active === "en" && styles.active}
+            onPointerOver={() => setActive("en")}
           />
           <File
             name="/hello.de-DE.mdx"
-            className={active === 'de' && styles.active}
-            onPointerOver={() => setActive('de')}
+            className={active === "de" && styles.active}
+            onPointerOver={() => setActive("de")}
           />
           <File
             name="/hello.ja-JP.mdx"
-            className={active === 'ja' && styles.active}
-            onPointerOver={() => setActive('ja')}
+            className={active === "ja" && styles.active}
+            onPointerOver={() => setActive("ja")}
           />
         </div>
       }
       b={
         <div
-          style={{ display: 'flex', flexDirection: 'column' }}
+          style={{ display: "flex", flexDirection: "column" }}
           className="menu overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800 dark:ring-white dark:ring-opacity-20"
         >
           <span
             className={cn(
-              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
-              active === 'en'
-                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
-                : 'text-gray-800 dark:text-gray-100 ',
+              "relative cursor-default select-none whitespace-nowrap px-4 py-1.5",
+              active === "en"
+                ? "nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10"
+                : "text-gray-800 dark:text-gray-100 "
             )}
-            onPointerOver={() => setActive('en')}
+            onPointerOver={() => setActive("en")}
           >
             English
           </span>
           <span
             className={cn(
-              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
-              active === 'de'
-                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
-                : 'text-gray-800 dark:text-gray-100 ',
+              "relative cursor-default select-none whitespace-nowrap px-4 py-1.5",
+              active === "de"
+                ? "nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10"
+                : "text-gray-800 dark:text-gray-100 "
             )}
-            onPointerOver={() => setActive('de')}
+            onPointerOver={() => setActive("de")}
           >
             Deutsch
           </span>
           <span
             className={cn(
-              'relative cursor-default select-none whitespace-nowrap px-4 py-1.5',
-              active === 'ja'
-                ? 'nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10'
-                : 'text-gray-800 dark:text-gray-100 ',
+              "relative cursor-default select-none whitespace-nowrap px-4 py-1.5",
+              active === "ja"
+                ? "nx-text-primary-600 nx-bg-primary-50 dark:nx-bg-primary-500/10"
+                : "text-gray-800 dark:text-gray-100 "
             )}
-            onPointerOver={() => setActive('ja')}
+            onPointerOver={() => setActive("ja")}
           >
             日本語
           </span>
@@ -104,7 +104,7 @@ export function I18n() {
       Simple, free, open source, without API key and unlimited. <br className='sm:block hidden'/> Predict a person's gender with just a POST request
     </p>
     <p className="subtitle">
-      <Link className={styles.cta} href="/docs">Get started <span>→</span></Link>
+      <Link className={styles.cta} href="https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions">Get started <span>→</span></Link>
     </p>
   </div>
   <style jsx>{`
@@ -222,7 +222,7 @@ export function I18n() {
   <div className="features-container">
     <div className="content-container">
       <Features>
-        <Feature index={0} large centered id="docs-card" href="/docs">
+        <Feature index={0} large centered id="docs-card" href="https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions">
           <Image src={docsCard} alt="Background" loading="eager" />
           <Image src={docsCard} alt="Background (Dark)" loading="eager" />
           <h3>Simple, direct and clear answers</h3>
@@ -236,7 +236,7 @@ export function I18n() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: '#fff'
-        }} href="/docs">
+        }} href="https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions">
           <svg fill="#ffffff" width="100px" height="100px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.07 4.25c-1.62 0-3 .94-4.07 2.79-1.08-1.85-2.45-2.79-4.07-2.79A3.84 3.84 0 0 0 0 8a3.84 3.84 0 0 0 3.93 3.75c1.62 0 3-.94 4.07-2.79 1.08 1.85 2.45 2.79 4.07 2.79A3.84 3.84 0 0 0 16 8a3.84 3.84 0 0 0-3.93-3.75zM3.93 10.5A2.6 2.6 0 0 1 1.25 8a2.6 2.6 0 0 1 2.68-2.5c1.25 0 2.29.82 3.18 2.5-.89 1.68-1.93 2.5-3.18 2.5zm8.14 0c-1.25 0-2.29-.82-3.18-2.5.89-1.68 1.93-2.5 3.18-2.5A2.6 2.6 0 0 1 14.75 8a2.6 2.6 0 0 1-2.68 2.5z"/></svg>
           <p style={{
             textShadow: '0 2px 4px rgb(0 0 0 / 20%)'
@@ -297,14 +297,14 @@ export function I18n() {
             }}
           >Fully <br />public <br />API</motion.h3>
         </Feature>
-        <Feature index={6} large href="/docs">
+        <Feature index={6} large href="https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions">
             <h3>Various cultures, various models</h3>
             <p>We have several AI models that can be used for free to predict the gender of people from different countries</p>
         </Feature>
         <Feature index={10} large>
           <h3>And more...</h3>
           <p>Cached Name Predict / Continuously Updated / Open Source Models... <br/>Several free benefits, start enjoying them now!</p>
-          <p className="subtitle"><Link className="!no-underline" href="/docs">Start using Gender Name →</Link></p>
+          <p className="subtitle"><Link className="!no-underline" href="https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions">Start using Gender Name →</Link></p>
         </Feature>
       </Features>
     </div>
