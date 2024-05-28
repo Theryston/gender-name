@@ -6,10 +6,27 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 ## Core Features
 
-- Dedicated models for different cultures and languages with the default model being 'gnbr' for Brazilian names.
+- Dedicated models for different cultures and languages.
 - User-friendly API endpoint designed for seamless integration with a wide range of platforms and applications.
 - Continuously updated and refined models to maintain high performance and accuracy.
-- Totally free, open source and [without request limits](#request-limit)
+- Totally free, open source and without request limits
+
+## Examples
+
+- [Predict BR gender based on Theryston name](https://api.gendername.com/predict?name=Theryston&model=gnbr)
+- [Predict USA gender based on John Doe name](https://api.gendername.com/predict?name=John+Doe&model=gnusa)
+
+## Multilingual and Multicultural Support
+
+Gender Name is designed to support names across various cultures and languages. We have dedicated models for different cultures and languages, each optimized for the naming conventions and gender associations of a particular country or culture. This provides high accuracy and cross-cultural applicability.
+
+## Seamless Integration with Diverse Platforms
+
+The Gender Name API has been designed to ensure effortless integration with a variety of platforms and programming languages. By making a GET request to the provided API endpoint and submitting the desired name, you will receive a JSON response containing the predicted gender.
+
+## Community Contributions and Collaboration
+
+We actively encourage and appreciate contributions from the community to further enhance the accuracy and functionality of Gender Name. If you have any suggestions, ideas for improvements, or model refinements, please feel free to create an issue or submit a pull request on our repository. Together, we can make this tool even more powerful and effective, serving a wide range of languages and cultures.
 
 ## Models
 
@@ -21,94 +38,34 @@ GET https://api.gendername.com/models
 
 ## Detailed API Usage Instructions
 
-To use the Gender Name API it is very simple, just make a request to `POST /predict` passing the `name` and `model` in the body, below is the more detailed request:
+To use the Gender Name API it is very simple, just make a request to `GET /predict` passing the `name` and `model` in the query params, below is the more detailed request:
 
 **Endpoint:**
 
 ```bash
-POST https://api.gendername.com/predict
+GET https://api.gendername.com/predict?name={person_name}&model={model_name}
 ```
 
-**Body:**
-
-```json
-{
-    "name": "{person_name}",
-    "model": "{model_name}"
-}
-```
-
-- Replace `{person_name}` with the name of the person you want to predict. If you pass first and last name, the API only predict for the first name
-- Replace `{model_name}` with the model you wish to use for the prediction. If no model is specified, the default 'gnbr' model will be used.
+- Replace `{person_name}` with the name of the person you want to predict.
+- Replace `{model_name}` with the model you wish to use for the prediction.
 
 **Response Example:**
 
 ```json
 {
-    "_id": "6557c8749b5f81d6f347f0d9",
     "raw_name": "Theryston",
-    "name": "theryston",
-    "model_id": "6557c19ef428e2a600c6aeba",
+    "encoded_name": "theryston",
+    "model_name": "gnbr",
     "gender": "male",
-    "score": 0.9074452519416809,
-    "full_result": [
-        {
-            "label": "male",
-            "score": 0.9074452519416809
-        },
-        {
-            "label": "female",
-            "score": 0.09255477786064148
-        }
-    ],
-    "cache": true,
-    "ip": "127.0.0.1",
-    "created_at": "2023-11-17T20:09:24.075Z",
-    "updated_at": "2023-11-17T20:09:24.075Z"
+    "probability": 0.9074452519416809,
+    "probabilities": {
+        "female": 0.007409584242850542,
+        "male": 0.010359096340835094,
+        "unisex": 0.9822313189506531
+    }
 }
 ```
 
-## Cloning
+## License
 
-The repository contains the trained models, this means that the clone may take a little longer and the project may weigh more due to the models. Remember to have [LFS](https://git-lfs.com/) installed before running the clone.
-
-Full command (install LFS and clone):
-
-```bash
-git lfs install
-git clone https://github.com/Theryston/gender-name.git
-```
-
-## Cache
-
-When you request a prediction we will see if someone has already made a prediction for that name and that model, if so we will not run the model, we will just use the already predicted result to generate your prediction. Note: your prediction will still be new, it will still have a unique ID, the only difference is that the `gender`, `score` and `full_result` fields will be reused from another prediction.
-
-This is good for several reasons: the process can be much faster since the model will not be executed, responses collected from the cache do not count towards your hourly request limit, we pay per model execution and if the model does not run we don't pay...
-
-If no one has previously made a prediction for the model and the name you are making the prediction for, you will not get the data from the cache, as there is no cache, but if you run the same prediction again you will see that it will already use the cache.
-
-We recommend that you use caching and it is already enabled by default, but you can disable it by sending the `no-cache` header to `true`
-
-## Request Limit
-
-The Gender Name API has no request limit for [cached prediction](#cache)!!! For predictions with the cache disabled there is a limit of 100 predictions per hour per IP, which means 2400 requests per day, but, remember: if you use the cache (it is enabled by default) you may never reach this limit because predictions made through the cache cannot count towards the limit.
-
-If this limit isn't enough for you, consider running the model through Replicate, where our models are hosted.
-
-The process is very simple: in the model search route `GET /models` open the link called `replicate_public_url` of the chosen model, this will take you to the public page of the model in Replicate, then click on "API" and you will see the instructions for running the model directly in your Replicate account, where there is no limit, but there are costs for the Replicate servers where the model is running.
-
-Remember: this cost is not our responsibility, it is solely the responsibility of the server at Replicate, as when running directly there you will be “hosting” the models yourself.
-
-## Multilingual and Multicultural Support
-
-Gender Name is designed to support names across various cultures and languages. We have dedicated models for different cultures and languages, each optimized for the naming conventions and gender associations of a particular country or culture. This provides high accuracy and cross-cultural applicability.
-
-The default model is 'gnbr', optimized for Brazilian names. However, you can specify the model best suited for your needs in the API request, ensuring greater accuracy for names from different cultures.
-
-## Seamless Integration with Diverse Platforms
-
-The Gender Name API has been designed to ensure effortless integration with a variety of platforms and programming languages. By making a POST request to the provided API endpoint and submitting the desired name, you will receive a JSON response containing the predicted gender.
-
-## Community Contributions and Collaboration
-
-We actively encourage and appreciate contributions from the community to further enhance the accuracy and functionality of Gender Name. If you have any suggestions, ideas for improvements, or model refinements, please feel free to create an issue or submit a pull request on our repository. Together, we can make this tool even more powerful and effective, serving a wide range of languages and cultures.
+The Gender Name API are licensed under the MIT license.
