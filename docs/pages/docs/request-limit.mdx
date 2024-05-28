@@ -1,9 +1,0 @@
-# Request Limit
-
-The Gender Name API has no request limit for [cached prediction](/docs/cache)!!! For predictions with the cache disabled there is a limit of 100 predictions per hour per IP, which means 2400 requests per day, but, remember: if you use the cache (it is enabled by default) you may never reach this limit because predictions made through the cache cannot count towards the limit.
-
-If this limit isn't enough for you, consider running the model through Replicate, where our models are hosted.
-
-The process is very simple: in the model search route `GET /models` open the link called `replicate_public_url` of the chosen model, this will take you to the public page of the model in Replicate, then click on "API" and you will see the instructions for running the model directly in your Replicate account, where there is no limit, but there are costs for the Replicate servers where the model is running.
-
-Remember: this cost is not our responsibility, it is solely the responsibility of the server at Replicate, as when running directly there you will be “hosting” the models yourself.
