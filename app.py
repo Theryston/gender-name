@@ -23,6 +23,9 @@ def predict():
 
     if not model_name:
         return jsonify({'error': 'Model parameter is required'}), 400
+    
+    if model_name not in models:
+        return jsonify({'error': 'Model not found'}), 404
 
     start_time = time.time()
     result = predict_gender(name, model_name)
