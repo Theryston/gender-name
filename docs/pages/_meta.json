@@ -9,7 +9,9 @@
   },
   "docs": {
     "type": "page",
-    "title": "Documentation"
+    "title": "Documentation",
+    "href": "https://github.com/Theryston/gender-name?tab=readme-ov-file#detailed-api-usage-instructions",
+    "newWindow": true
   },
   "about": {
     "type": "page",
