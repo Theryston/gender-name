@@ -34,8 +34,8 @@ const config: DocsThemeConfig = {
           name="og:description"
           content="An API that uses artificial intelligence to predict someone's gender based on their name"
         />
-        <meta name="twitter:site:domain" content="gendername.com" />
-        <meta name="twitter:url" content="https://gendername.com" />
+        <meta name="twitter:site:domain" content="gendername.org" />
+        <meta name="twitter:url" content="https://gendername.org" />
         <meta
           name="og:title"
           content={title ? title + ' – Gender Name' : 'Gender Name'}

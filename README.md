@@ -13,8 +13,8 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 ## Examples
 
-- [Predict BR gender based on Theryston name](https://api.gendername.com/predict?name=Theryston&model=gnbr)
-- [Predict USA gender based on John Doe name](https://api.gendername.com/predict?name=John+Doe&model=gnusa)
+- [Predict BR gender based on Theryston name](https://api.gendername.org/predict?name=Theryston&model=gnbr)
+- [Predict USA gender based on John Doe name](https://api.gendername.org/predict?name=John+Doe&model=gnusa)
 
 ## Multilingual and Multicultural Support
 
@@ -33,7 +33,7 @@ We actively encourage and appreciate contributions from the community to further
 You can list all available models by accessing the `GET /models` endpoint:
 
 ```bash
-GET https://api.gendername.com/models
+GET https://api.gendername.org/models
 ```
 
 ## Detailed API Usage Instructions
@@ -43,7 +43,7 @@ To use the Gender Name API it is very simple, just make a request to `GET /predi
 **Endpoint:**
 
 ```bash
-GET https://api.gendername.com/predict?name={person_name}&model={model_name}
+GET https://api.gendername.org/predict?name={person_name}&model={model_name}
 ```
 
 - Replace `{person_name}` with the name of the person you want to predict.
