@@ -1,9 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from predict import predict_gender
 import time
 from models import models
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return redirect('https://gendername.org')
 
 @app.route('/models')
 def get_models():
