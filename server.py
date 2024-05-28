@@ -21,17 +21,18 @@ def predict():
         return jsonify({'error': 'Model parameter is required'}), 400
 
     start_time = time.time()
-    gender, probabilities = predict_gender(name, model_name)
+    result = predict_gender(name, model_name)
     end_time = time.time()
     elapsed_ms = (end_time - start_time) * 1000
 
-    response = {
-        'gender': gender,
+    return jsonify({
+        'gender': result['gender'],
+        'probability': result['probability'],
+        'name': result['name'],
+        'model_name': result['model_name'],
         'elapsed_ms': elapsed_ms,
-        'probabilities': probabilities,
-    }
-
-    return jsonify(response)
+        'probabilities': result['probabilities'],
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

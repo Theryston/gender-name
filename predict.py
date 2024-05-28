@@ -20,9 +20,8 @@ def predict_gender(name, model_name):
 
         return {
             'gender': predicted_gender,
-            'probabilities': probabilities_with_names,
-            'raw_name': name,
-            'encoded_name': encoded_name.numpy()[0].tolist(),
+            'probability': probability,
             'model_name': model_name,
-            'probability': probability
+            'name': name,
+            'probabilities': probabilities_with_names,
         }

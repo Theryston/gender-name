@@ -53,16 +53,16 @@ GET https://api.gendername.com/predict?name={person_name}&model={model_name}
 
 ```json
 {
-    "raw_name": "Theryston",
-    "encoded_name": "theryston",
-    "model_name": "gnbr",
-    "gender": "male",
-    "probability": 0.9074452519416809,
-    "probabilities": {
-        "female": 0.007409584242850542,
-        "male": 0.010359096340835094,
-        "unisex": 0.9822313189506531
-    }
+  "elapsed_ms": 0.9026527404785156,
+  "gender": "male",
+  "model_name": "gnbr",
+  "name": "joão",
+  "probabilities": {
+    "female": 0.015912363305687904,
+    "male": 0.941521167755127,
+    "unisex": 0.042566485702991486
+  },
+  "probability": 0.941521167755127
 }
 ```
 
