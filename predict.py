@@ -1,27 +1,31 @@
-from encode_name import encode_name
-from sklearn.preprocessing import LabelEncoder
+from encode import encode_name
 import torch
-import numpy as np
+from encode import get_label_from_tensor
 from models import models
 
-def predict_gender(name, model_name):
+def predict_gender(names, model_name):
     model = models[model_name]
-
-    le = LabelEncoder();
-    le.fit(['male', 'female', 'unisex']);
+    model.eval()
+    encoded_names = [encode_name(name) for name in names]
+    encoded_names = torch.stack(encoded_names)
+    encoded_names = encoded_names.squeeze(1)
 
     with torch.no_grad():
-        encoded_name = torch.tensor([encode_name(name)], dtype=torch.long)
-        output = model(encoded_name)
-        probabilities = output[0].numpy()
-        predicted_gender = le.inverse_transform([np.argmax(probabilities)])[0]
-        probabilities_with_names = {k: float(v) for k, v in dict(zip(le.classes_, probabilities)).items()}
-        probability = probabilities_with_names[predicted_gender]        
+        y_logics = model(encoded_names)
+        y_preds = torch.softmax(y_logics, dim=1)
+        results = [];
+        for i in range(len(names)):
+            y_pred = y_preds[i]
+            labels = get_label_from_tensor(y_pred)
+            results.append({
+                "gender": labels["label"],
+                "probability": y_pred[labels["biggest_index"]].item(),
+                "name": names[i],
+                "probabilities": {
+                    "male": labels["male"].item(),
+                    "female": labels["female"].item(),
+                    "unisex": labels["unisex"].item()
+                }
+            })
 
-        return {
-            'gender': predicted_gender,
-            'probability': probability,
-            'model_name': model_name,
-            'name': name,
-            'probabilities': probabilities_with_names,
-        }
+    return results

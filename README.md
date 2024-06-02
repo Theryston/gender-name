@@ -46,23 +46,27 @@ To use the Gender Name API it is very simple, just make a request to `GET /predi
 GET https://api.gendername.org/predict?name={person_name}&model={model_name}
 ```
 
-- Replace `{person_name}` with the name of the person you want to predict.
+- Replace `{person_name}` with the name of the person you want to predict (can be up to 1000 names if you split it by comma, like: `{person_name1},{person_name2}`).
 - Replace `{model_name}` with the model you wish to use for the prediction.
 
 **Response Example:**
 
 ```json
 {
-  "elapsed_ms": 0.9026527404785156,
-  "gender": "male",
+  "elapsed_ms": 2.2819042205810547,
   "model_name": "gnbr",
-  "name": "joão",
-  "probabilities": {
-    "female": 0.015912363305687904,
-    "male": 0.941521167755127,
-    "unisex": 0.042566485702991486
-  },
-  "probability": 0.941521167755127
+  "results": [
+    {
+      "gender": "male",
+      "name": "joão",
+      "probability": 0.9888328313827515,
+      "probabilities": {
+        "female": 0.0000666277264826931,
+        "male": 0.9888328313827515,
+        "unisex": 0.011100534349679947
+      },
+    }
+  ]
 }
 ```
 

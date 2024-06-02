@@ -26,19 +26,21 @@ def predict():
     
     if model_name not in models:
         return jsonify({'error': 'Model not found'}), 404
+    
+    names = name.split(',')
+    
+    if len(names) > 1_000:
+        return jsonify({'error': 'Just allowed 1,000 names'}), 400
 
     start_time = time.time()
-    result = predict_gender(name, model_name)
+    results = predict_gender(names, model_name)
     end_time = time.time()
     elapsed_ms = (end_time - start_time) * 1000
 
     return jsonify({
-        'gender': result['gender'],
-        'probability': result['probability'],
-        'name': result['name'],
-        'model_name': result['model_name'],
         'elapsed_ms': elapsed_ms,
-        'probabilities': result['probabilities'],
+        'model_name': model_name,
+        'results': results
     })
 
 if __name__ == '__main__':
