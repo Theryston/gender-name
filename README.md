@@ -13,8 +13,8 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 ## Examples
 
-- [Predict BR gender based on Theryston name](https://api.gendername.org/predict?name=Theryston&model=gnbr)
 - [Predict USA gender based on John Doe name](https://api.gendername.org/predict?name=John+Doe&model=gnusa)
+- [Predict BR gender based on Theryston name](https://api.gendername.org/predict?name=Theryston&model=gnbr)
 
 ## Multilingual and Multicultural Support
 
