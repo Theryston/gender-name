@@ -16,6 +16,13 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 - [Predict USA gender based on John Doe name](https://api.gendername.org/predict?name=John+Doe&model=gnusa)
 - [Predict BR gender based on Theryston name](https://api.gendername.org/predict?name=Theryston&model=gnbr)
 
+## Available Models
+
+| Model | Country | Description                                  |
+|-------|---------|----------------------------------------------|
+| gnbr  | Brazil  | Predict gender by names of humans from Brazil|
+| gnusa | USA     | Predict gender by names of humans from USA   |
+
 ## Multilingual and Multicultural Support
 
 Gender Name is designed to support names across various cultures and languages. We have dedicated models for different cultures and languages, each optimized for the naming conventions and gender associations of a particular country or culture. This provides high accuracy and cross-cultural applicability.
