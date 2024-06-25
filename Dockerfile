@@ -1,4 +1,4 @@
-FROM python:latest
+FROM public.ecr.aws/docker/library/python:latest
 
 WORKDIR /python-docker
 
