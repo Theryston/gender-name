@@ -20,4 +20,4 @@ jobs:
       - name: delete container if exists
         run: docker rm -f gendername || true
       - name: run container
-        run: docker run -d --name gendername -p 5481:5000 gendername
+        run: docker run -d --name gendername -p 5481:3000 gendername
