@@ -1,0 +1,15 @@
+resources:
+  webService:
+    type: web-service
+    properties:
+      resources:
+        cpu: 0.25
+        memory: 512
+      packaging:
+        type: custom-dockerfile
+        properties:
+          buildContextPath: ./
+      environment: []
+      scaling:
+        minInstances: 0
+        maxInstances: 1
