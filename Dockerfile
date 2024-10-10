@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:latest
+FROM public.ecr.aws/docker/library/python:3.8-slim
 
 WORKDIR /app
 
