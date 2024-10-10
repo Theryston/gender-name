@@ -18,10 +18,10 @@ Gender Name is a powerful and sophisticated tool that employs state-of-the-art a
 
 ## Available Models
 
-| Model | Country | Description                                  |
-|-------|---------|----------------------------------------------|
-| gnbr  | Brazil  | Predict gender by names of humans from Brazil|
-| gnusa | USA     | Predict gender by names of humans from USA   |
+| Model | Country | Description                                   |
+| ----- | ------- | --------------------------------------------- |
+| gnbr  | Brazil  | Predict gender by names of humans from Brazil |
+| gnusa | USA     | Predict gender by names of humans from USA    |
 
 ## Multilingual and Multicultural Support
 
@@ -71,7 +71,7 @@ GET https://api.gendername.org/predict?name={person_name}&model={model_name}
         "female": 0.0000666277264826931,
         "male": 0.9888328313827515,
         "unisex": 0.011100534349679947
-      },
+      }
     }
   ]
 }
@@ -79,4 +79,4 @@ GET https://api.gendername.org/predict?name={person_name}&model={model_name}
 
 ## License
 
-The Gender Name API are licensed under the MIT license.
+The Gender Name API are licensed under the MIT license!
