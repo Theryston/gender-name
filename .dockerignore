@@ -1,1 +1,3 @@
 docs
+venv
+__pycache__
